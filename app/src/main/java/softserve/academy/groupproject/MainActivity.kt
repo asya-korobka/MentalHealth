@@ -45,5 +45,7 @@ class MainActivity : AppCompatActivity() {
                 userPassword2.text.clear()
             }
         }
+
     }
+
 }

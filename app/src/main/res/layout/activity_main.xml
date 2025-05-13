@@ -98,9 +98,10 @@
                 android:layout_height="match_parent"
                 android:clickable="true"
                 android:text="увійти"
+                android:fontFamily="@font/montserrat"
                 android:textColor="#B41A1A"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
         </LinearLayout>
 
     </LinearLayout>
