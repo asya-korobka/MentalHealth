@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E7E8F0"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp"
+        android:layout_marginTop="70dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Як ти почуваєшся?"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Ряд з емоджі -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/button100"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:contentDescription="Emoji 1"
+                android:scaleType="centerInside"
+                android:src="@drawable/happy_100" />
+
+            <ImageButton
+                android:id="@+id/button75"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:contentDescription="Emoji 2"
+                android:scaleType="centerInside"
+                android:src="@drawable/good_75" />
+
+            <ImageButton
+                android:id="@+id/button50"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:contentDescription="Emoji 3"
+                android:scaleType="centerInside"
+                android:src="@drawable/cantcomplain_50" />
+
+            <ImageButton
+                android:id="@+id/button25"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:contentDescription="Emoji 4"
+                android:scaleType="centerInside"
+                android:src="@drawable/bad_25" />
+
+            <ImageButton
+                android:id="@+id/button0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:contentDescription="Emoji 5"
+                android:scaleType="centerInside"
+                android:src="@drawable/worst_0" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="367dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Опиши детальніше свої почуття (необов'язково)"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextMood"
+            android:layout_width="369dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edittext_background"
+            android:gravity="start|top"
+            android:hint="Опишіть тут..."
+            android:inputType="textMultiLine"
+            android:padding="16dp"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="250dp"
+            android:layout_height="69dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#A5A6F6"
+            android:fontFamily="@font/montserrat"
+            android:text="ЗБЕРЕГТИ"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</ScrollView>

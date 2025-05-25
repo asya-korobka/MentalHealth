@@ -30,6 +30,9 @@
             android:name=".AuthActivity"
             android:exported="false" />
         <activity
+            android:name=".EmotionalStateActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
