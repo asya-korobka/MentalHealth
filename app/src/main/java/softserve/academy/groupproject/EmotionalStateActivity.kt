@@ -2,14 +2,15 @@ package softserve.academy.groupproject
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class EmotionalStateActivity : AppCompatActivity() {
 
+    private var selectedMoodValue: String? = null
+    private lateinit var editTextMood: EditText
+    private lateinit var saveButton: Button
     private var hasSelectedMood = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,9 @@ class EmotionalStateActivity : AppCompatActivity() {
             "Поговори з близьким — це може допомогти."
         )
 
+        editTextMood = findViewById(R.id.editTextMood)
+        saveButton = findViewById(R.id.button_save)
+
         val moodButtons = mapOf(
             R.id.button100 to "100",
             R.id.button75 to "75",
@@ -36,31 +40,41 @@ class EmotionalStateActivity : AppCompatActivity() {
             R.id.button0 to "0"
         )
 
-        // Назначаем обработчики для кнопок выбора настроения
         moodButtons.forEach { (buttonId, moodValue) ->
             findViewById<ImageButton>(buttonId).setOnClickListener {
                 if (!hasSelectedMood) {
                     hasSelectedMood = true
-                    when (moodValue) {
-                        "100", "75" -> {
-                            val message = messagesPositive.random()
-                            showDialog("Чудово!", message)
-                        }
-                        else -> {
-                            val message = messagesSupportive.random()
-                            showDialog("Дякуємо за чесність", message)
-                        }
+                    selectedMoodValue = moodValue
+
+                    val message = when (moodValue) {
+                        "100", "75" -> messagesPositive.random()
+                        else -> messagesSupportive.random()
                     }
+                    showDialog("Обраний стан: $moodValue%", message)
                 } else {
                     Toast.makeText(this, "Ви вже обрали свій стан", Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
-        val saveButton: Button = findViewById(R.id.button_save)
         saveButton.setOnClickListener {
-            val intent = Intent(this, ItemsActivity::class.java)
+            if (selectedMoodValue == null) {
+                Toast.makeText(this, "Будь ласка, оберіть свій настрій", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val comment = editTextMood.text.toString().trim()
+            val mood = selectedMoodValue
+
+            // Збереження настрою
+            saveMoodData(mood!!)
+
+            Toast.makeText(this, "Збережено: Настрій $mood%, Коментар: \"$comment\"", Toast.LENGTH_LONG).show()
+
+            // Повернення на головний екран
+            val intent = Intent(this, MoodChartActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -70,5 +84,13 @@ class EmotionalStateActivity : AppCompatActivity() {
             .setMessage(message)
             .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
             .show()
+    }
+
+    private fun saveMoodData(mood: String) {
+        val prefs = getSharedPreferences("mood_data", MODE_PRIVATE)
+        val editor = prefs.edit()
+        val timestamp = System.currentTimeMillis()
+        editor.putString(timestamp.toString(), mood)
+        editor.apply()
     }
 }
