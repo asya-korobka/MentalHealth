@@ -3,10 +3,13 @@ package softserve.academy.groupproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class ItemsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +18,7 @@ class ItemsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_items)
 
         val itemsList: RecyclerView = findViewById(R.id.itemsList)
-        val moodChartButton: Button = findViewById(R.id.buttonMoodChart)
+        val backButton: ImageButton = findViewById(R.id.button_back)
 
         val items = arrayListOf<Item>(
             Item(1, "mari", "Марія", "Психолог Марія спеціалізується на роботі з тривожними розладами у молоді. Вона використовує сучасні методи когнітивно-поведінкової терапії, які допомагають швидко позбутися тривоги та повернути спокій у життя \n" +
@@ -28,8 +31,7 @@ class ItemsActivity : AppCompatActivity() {
         itemsList.layoutManager = LinearLayoutManager(this)
         itemsList.adapter = ItemsAdapter(items, this)
 
-        // Обробка натискання кнопки "Графік настрою"
-        moodChartButton.setOnClickListener {
+        backButton.setOnClickListener {
             val intent = Intent(this, MoodChartActivity::class.java)
             startActivity(intent)
         }

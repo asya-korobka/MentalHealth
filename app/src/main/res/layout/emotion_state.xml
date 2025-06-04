@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chartLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7E8F0"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:background="#ECECF5"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +38,7 @@
 
             <ImageButton
                 android:id="@+id/button100"
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
@@ -56,7 +58,7 @@
 
             <ImageButton
                 android:id="@+id/button50"
-                android:layout_width="0dp"
+                android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
@@ -88,7 +90,7 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="367dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
@@ -96,12 +98,12 @@
             android:fontFamily="@font/montserrat"
             android:text="Опиши детальніше свої почуття (необов'язково)"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextMood"
-            android:layout_width="369dp"
+            android:layout_width="320dp"
             android:layout_height="150dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/edittext_background"
@@ -114,14 +116,16 @@
 
         <Button
             android:id="@+id/button_save"
-            android:layout_width="250dp"
-            android:layout_height="69dp"
-            android:layout_gravity="center"
-            android:backgroundTint="#A5A6F6"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#8CC7C5E2"
             android:fontFamily="@font/montserrat"
-            android:text="ЗБЕРЕГТИ"
+            android:text="Зберегти"
             android:textColor="#000"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            />
 
     </LinearLayout>
-</ScrollView>
+</LinearLayout>
