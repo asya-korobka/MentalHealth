@@ -13,25 +13,16 @@
     <!-- Кнопка назад -->
     <ImageButton
         android:id="@+id/button_back"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="start"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="Назад"
         android:scaleType="fitCenter"
-        android:src="@drawable/back"
-        android:layout_marginBottom="8dp"/>
+        android:src="@drawable/back" />
 
-    <!-- Кнопка графіку -->
-    <Button
-        android:id="@+id/buttonMoodChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Графік настрою"
-        android:backgroundTint="@color/jet_black"
-        android:textColor="@android:color/white"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/montserrat" />
 
     <!-- Заголовок -->
     <TextView

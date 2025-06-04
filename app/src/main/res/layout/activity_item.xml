@@ -7,15 +7,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#E7E8F0"
-    tools:context=".ItemActivity">
+    tools:context=".ItemActivity"
+    android:padding="16dp">
 
     <ImageButton
         android:id="@+id/button_back"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="Назад"
         android:scaleType="fitCenter"
@@ -26,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         app:srcCompat="@drawable/mari" />
 
     <TextView
@@ -79,17 +80,4 @@
         android:textStyle="normal"
         />
 
-    <Button
-        android:id="@+id/button_chart"
-        android:layout_width="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#8CC7C5E2"
-        android:text="Показати графік"
-        android:textColor="#000"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        />
 </LinearLayout>

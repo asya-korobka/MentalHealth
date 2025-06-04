@@ -11,6 +11,7 @@
         android:id="@+id/chartTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="Графік настрою"
         android:textSize="20sp"
         android:gravity="center"
@@ -84,7 +85,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
         android:text="Записатися до психолога"
+        android:textSize="16sp"
         android:backgroundTint="#C7C5E2"
-        android:textColor="#000000" />
+        android:textColor="#000000"/>
 </LinearLayout>
