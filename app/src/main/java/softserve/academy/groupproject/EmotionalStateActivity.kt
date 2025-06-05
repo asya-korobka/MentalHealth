@@ -12,10 +12,15 @@ class EmotionalStateActivity : AppCompatActivity() {
     private lateinit var editTextMood: EditText
     private lateinit var saveButton: Button
     private var hasSelectedMood = false
+    private lateinit var currentUser: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.emotion_state)
+
+        // Отримуємо поточного користувача з SharedPreferences
+        val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        currentUser = prefs.getString("current_user", "") ?: ""
 
         val messagesPositive = listOf(
             "Ти молодець! Продовжуй у тому ж дусі!",
@@ -64,14 +69,14 @@ class EmotionalStateActivity : AppCompatActivity() {
             }
 
             val comment = editTextMood.text.toString().trim()
-            val mood = selectedMoodValue
+            val mood = selectedMoodValue!!.toInt()
 
-            // Збереження настрою
-            saveMoodData(mood!!)
+            val db = DbHelper(this, null)
+            val timestamp = System.currentTimeMillis()
+            db.saveMood(currentUser, timestamp, mood, comment)
 
             Toast.makeText(this, "Збережено: Настрій $mood%, Коментар: \"$comment\"", Toast.LENGTH_LONG).show()
 
-            // Повернення на головний екран
             val intent = Intent(this, MoodChartActivity::class.java)
             startActivity(intent)
             finish()
@@ -86,11 +91,5 @@ class EmotionalStateActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun saveMoodData(mood: String) {
-        val prefs = getSharedPreferences("mood_data", MODE_PRIVATE)
-        val editor = prefs.edit()
-        val timestamp = System.currentTimeMillis()
-        editor.putString(timestamp.toString(), mood)
-        editor.apply()
-    }
+
 }
