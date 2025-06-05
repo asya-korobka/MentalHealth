@@ -88,7 +88,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="У мене є аккаунт, "
+                android:text="У мене є аккаунт "
                 android:textColor="#000000"
                 android:textSize="14sp" />
 
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:clickable="true"
-                android:text="увійти"
+                android:text="Увійти"
                 android:fontFamily="@font/montserrat"
                 android:textColor="#B41A1A"
                 android:textSize="14sp"

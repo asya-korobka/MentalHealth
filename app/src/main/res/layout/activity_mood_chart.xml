@@ -40,48 +40,71 @@
         android:layout_gravity="center"
         android:elevation="4dp">
 
+
         <!-- Емодзі шкала -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginEnd="8dp"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal|bottom"
+            android:paddingBottom="20dp"
+            android:layout_marginTop="20dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="😍"
-                android:textSize="22sp" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="Emoji 100%"
+                android:src="@drawable/happy_100" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="😊"
-                android:textSize="22sp" />
+                android:layout_weight="1" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="😐"
-                android:textSize="22sp" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/good_75"
+                android:contentDescription="Emoji 75%" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="😟"
-                android:textSize="22sp" />
+                android:layout_weight="1" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/cantcomplain_50"
+                android:contentDescription="Emoji 50%" />
+
+            <View
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="😵"
-                android:textSize="22sp" />
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/bad_25"
+                android:contentDescription="Emoji 25%" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/worst_0"
+                android:contentDescription="Emoji 0%" />
+
         </LinearLayout>
 
         <softserve.academy.groupproject.MoodChartView
