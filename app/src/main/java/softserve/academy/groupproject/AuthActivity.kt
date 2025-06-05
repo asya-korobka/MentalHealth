@@ -23,8 +23,7 @@ class AuthActivity : AppCompatActivity() {
         val linkReg: TextView = findViewById(R.id.link_reg)
 
         linkReg.setOnClickListener{
-            val intent= Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity::class.java))
         }
         button.setOnClickListener{
             val login = userLogin.text.toString().trim()
@@ -41,8 +40,11 @@ class AuthActivity : AppCompatActivity() {
                     Toast.makeText(this, "Користувач $login авторизован", Toast.LENGTH_LONG).show()
                     userLogin.text.clear()
                     userPassword.text.clear()
+                    val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                    prefs.edit().putString("current_user", login).apply()
                     val intent = Intent(this, EmotionalStateActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else
                     Toast.makeText(this, "Користувач $login НЕ авторизован", Toast.LENGTH_LONG).show()
             }

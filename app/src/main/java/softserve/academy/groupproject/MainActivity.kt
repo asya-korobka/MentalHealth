@@ -23,8 +23,7 @@ class MainActivity : AppCompatActivity() {
         val button: Button = findViewById(R.id.button_reg)
         val linkAuth: TextView = findViewById(R.id.link_auth)
         linkAuth.setOnClickListener {
-            val intent = Intent(this, AuthActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, AuthActivity::class.java))
         }
         button.setOnClickListener{
             val login = userLogin.text.toString().trim()

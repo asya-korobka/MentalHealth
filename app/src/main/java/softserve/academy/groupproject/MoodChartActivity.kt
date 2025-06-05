@@ -20,12 +20,12 @@ class MoodChartActivity : AppCompatActivity() {
         val backButton: ImageButton = findViewById(R.id.button_back)
 
 
-        val prefs = getSharedPreferences("mood_data", MODE_PRIVATE)
-        val data = prefs.all.mapNotNull {
-            val timestamp = it.key.toLongOrNull()
-            val mood = (it.value as? String)?.toIntOrNull()
-            if (timestamp != null && mood != null) timestamp to mood else null
-        }
+        val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val currentUser = prefs.getString("current_user", "") ?: ""
+
+        val db = DbHelper(this, null)
+        val data = db.getMoodData(currentUser)
+
 
         moodChartView.setMoodData(data)
 

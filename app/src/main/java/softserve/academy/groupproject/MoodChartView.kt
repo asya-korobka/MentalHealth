@@ -90,13 +90,12 @@ class MoodChartView(context: Context, attrs: AttributeSet?) : View(context, attr
         // Малювання підписів часу (макс. 5 підписів)
         val dateFormat = java.text.SimpleDateFormat("dd.MM", java.util.Locale.getDefault())
 
-        // Кінцева дата (максимальна) — ліворуч внизу (біля осі Y)
-        val endDateLabel = dateFormat.format(java.util.Date(moodData.last().first))
-        canvas.drawText(endDateLabel, padding - 30f, height - padding / 3, labelPaint)
-
-        // Поточна дата (мінімальна) — праворуч внизу
+        // Перша дата (мінімальна) — ліворуч внизу (біля осі Y)
         val currentDateLabel = dateFormat.format(java.util.Date(moodData.first().first))
-        canvas.drawText(currentDateLabel, width - padding - 40f, height - padding / 3, labelPaint)
+        canvas.drawText(currentDateLabel, padding - 30f, height - padding / 3, labelPaint)
 
+        // Поточна дата (максимальна) — праворуч внизу
+        val endDateLabel  = dateFormat.format(java.util.Date(moodData.last().first))
+        canvas.drawText(endDateLabel, width - padding - 40f, height - padding / 3, labelPaint)
     }
 }
