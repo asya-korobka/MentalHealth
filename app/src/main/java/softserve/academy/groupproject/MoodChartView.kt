@@ -52,14 +52,15 @@ class MoodChartView(context: Context, attrs: AttributeSet?) : View(context, attr
         val padding = 100f
         val usableWidth = width - 2 * padding
         val usableHeight = height - 2 * padding
-        val maxMood = 10
-        val minMood = 1
+        val maxMood = 100
+        val minMood = 0
 
-        // Фонова сітка
-        for (i in minMood..maxMood) {
-            val y = padding + ((maxMood - i).toFloat() / (maxMood - minMood)) * usableHeight
+        val moodSteps = listOf(0, 25, 50, 75, 100)
+        for (i in moodSteps) {
+            val fraction = (maxMood - i).toFloat() / (maxMood - minMood)
+            val y = padding + fraction * usableHeight
             canvas.drawLine(padding, y, width - padding, y, axisPaint)
-            canvas.drawText(i.toString(), 30f, y + 10f, labelPaint)
+            canvas.drawText("$i%", padding - 60f, y + 10f, labelPaint)
         }
 
         // Підготовка точок
@@ -70,7 +71,7 @@ class MoodChartView(context: Context, attrs: AttributeSet?) : View(context, attr
         val points = moodData.map { (timestamp, mood) ->
             val x = padding + ((timestamp - minTime).toFloat() / timeRange) * usableWidth
             val y = padding + ((maxMood - mood).toFloat() / (maxMood - minMood)) * usableHeight
-            PointF(x, y)
+            PointF(x.coerceIn(padding, width - padding), y.coerceIn(padding, height - padding))
         }
 
         // Малювання лінії графіка
@@ -87,14 +88,15 @@ class MoodChartView(context: Context, attrs: AttributeSet?) : View(context, attr
         }
 
         // Малювання підписів часу (макс. 5 підписів)
-        val timeLabels = points.indices step (points.size / 4).coerceAtLeast(1)
-        timeLabels.forEach { i ->
-            val label = "T${i + 1}"
-            canvas.drawText(label, points[i].x - 20f, height - padding / 2, labelPaint)
-        }
+        val dateFormat = java.text.SimpleDateFormat("dd.MM", java.util.Locale.getDefault())
 
-        // Назви осей
-        canvas.drawText("↓ Настрій", 10f, padding - 30f, labelPaint)
-        canvas.drawText("Час →", width - 160f, height - 20f, labelPaint)
+        // Кінцева дата (максимальна) — ліворуч внизу (біля осі Y)
+        val endDateLabel = dateFormat.format(java.util.Date(moodData.last().first))
+        canvas.drawText(endDateLabel, padding - 30f, height - padding / 3, labelPaint)
+
+        // Поточна дата (мінімальна) — праворуч внизу
+        val currentDateLabel = dateFormat.format(java.util.Date(moodData.first().first))
+        canvas.drawText(currentDateLabel, width - padding - 40f, height - padding / 3, labelPaint)
+
     }
 }
